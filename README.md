@@ -62,3 +62,7 @@ nano local.yml
 
 
 
+Install using ansible-playbook:
+```bash
+ansible-playbook local.yml
+```
