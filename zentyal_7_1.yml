@@ -5,19 +5,19 @@
   become: true
 
   tasks:
-  - name: Add key for Zentyal 8.0
+  - name: Add key for Zentyal 7.1
     ansible.builtin.get_url:
-      url: http://keys.zentyal.org/zentyal-8.0-packages-org.asc
+      url: http://keys.zentyal.org/zentyal-7.1-packages-org.asc
       dest: /etc/apt/trusted.gpg.d/zentyal.asc
       mode: '0644'
       force: true
 
-  - name: Add repo for Zentyal 8.0
+  - name: Add repo for Zentyal 7.1
     ansible.builtin.apt_repository:
-      repo: deb http://packages.zentyal.org/zentyal 8.0 main extra
+      repo: deb http://packages.zentyal.org/zentyal 7.1 main extra
       state: present
 
-  - name: Installing Zentyal
+  - name: Installing Zentyal 7.1
     apt:
       name: 
         - zentyal

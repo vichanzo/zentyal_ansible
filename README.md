@@ -38,9 +38,26 @@ nano local.yml
   become: true
   
   tasks:
-  - name: Install htop
+  - name: Add key for Zentyal 7.1
+    ansible.builtin.get_url:
+      url: http://keys.zentyal.org/zentyal-7.1-packages-org.asc
+      dest: /etc/apt/trusted.gpg.d/zentyal.asc
+      mode: '0644'
+      force: true
+
+  - name: Add repo for Zentyal 7.1
+    ansible.builtin.apt_repository:
+      repo: deb http://packages.zentyal.org/zentyal 7.1 main extra
+      state: present
+
+  - name: Installing Zentyal 7.1
     apt:
-      name: htop
+      name:
+        - zentyal
+      state: latest
+      force_apt_get: true
+      update_cache: true
+
 ```
 
 
