@@ -23,4 +23,25 @@ ssh -T git@github.com
 Clone this repository:
 ```bash
 git clone git@github.com:vichanzo/zentyal_ansible.git
+
 ```
+Edit a file 'local.yml'
+
+```bash
+nano local.yml
+```
+
+```yml
+---
+- hosts: localhost
+  connection: local
+  become: true
+  
+  tasks:
+  - name: Install htop
+    apt:
+      name: htop
+```
+
+
+
